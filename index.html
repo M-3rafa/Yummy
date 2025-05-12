@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yummy</title>
+  <link rel="shortcut icon" href="image/logo.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<link rel="stylesheet" href="style/bootstrap.min.css" />
+<link rel="stylesheet" href="style/main.css" />
+
+<body class="bg-dark text-light">
+
+  <div
+    class="loading-screen fade-out position-fixed top-0 start-0 end-0 bottom-0 justify-content-center align-items-center">
+    <div class="spinner-border text-light" role="status" style="width: 3rem; height: 3rem;">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-3">Loading...</p>
+  </div>
+
+
+
+  <!-- Side Nav -->
+  <section class="Sidebar min-vh-100 top-0 bottom-0 position-fixed d-flex">
+    <div class="Main-header min-vh-100 d-flex flex-column justify-content-between p-4">
+      <div class="Links">
+        <ul class="list-unstyled gy-2 overflow-hidden">
+          <li onclick="showSearchInputs()" class=" position-relative ">Search</li>
+          <li onclick="getCategories()" class=" position-relative ">Categories</li>
+          <li onclick="getArea()" class=" position-relative ">Area</li>
+          <li onclick="getIngredient()" class=" position-relative ">Ingredient</li>
+          <li onclick="showContactUs()" class=" position-relative ">Contact Us</li>
+        </ul>
+      </div>
+
+
+      <div class="Sdiebar-footer">
+        <div class="fo-icon">
+          <a href="#" target='_blank' class='p-1 link-unstyled text-decoration-none text-white'>
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="#" target='_blank' class='p-1 link-unstyled text-decoration-none text-white'>
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="#" target='_blank' class='p-1 link-unstyled text-decoration-none text-white'>
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        <div class="footer">
+          <span>Copyright © 2024 <br />
+            Mahmoud Arafa<br /> Reserved.</span>
+        </div>
+      </div>
+    </div>
+    <div class="Sidebar-Header d-flex flex-column justify-content-between bg-white text-black px-2 py-4 text-center">
+      <img src="image/logo.png" class="logo " alt="Logo">
+      <div class="d-flex flex-column  g-3">
+        <i class="cursor-pointer fa-solid fa-house home-icon mb-4" onclick="firstReload()"></i>
+        <i class="cursor-pointer fa-solid fa-x fa-xl open-close-icon"></i>
+      </div>
+      <div>
+        <a href="#" class="text-decoration-none text-reset"> <i class="fa-solid fa-globe d-block"></i></a>
+        <a href="#" class="text-decoration-none text-reset"> <i class="fa-solid fa-share-nodes"></i></a>
+
+
+      </div>
+    </div>
+  </section>
+  <!-- end Side Nav -->
+
+
+
+  <section class="Search">
+    <div class="container" id="SearchContainer">
+
+    </div>
+
+  </section>
+
+  <section class="Home ">
+    <div class="container  ">
+      <div class="row   py-5 ps-5 pe-1 g-4 d-flex  " id="Meals">
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+  <!-- Contact -->
+  <section class="Contact d-flex justify-content-center align-items-center vh-100 d-none" id="contact-us">
+    <div class="container w-50 text-center">
+      <h2>Contact Us</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input onkeyup="validation()" class="form-control  border-top-0 border-start-0 border-end-0 " id="name"
+              type="text" placeholder="Enter Your Name">
+            <div class="alert mt-1 alert-danger d-none" id="namealert" role="alert">
+              Special Characters and Numbers not allowed
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input onkeyup="validation()" class="form-control  border-top-0 border-start-0 border-end-0" id="email"
+              placeholder="Enter Email">
+            <div class="alert mt-1 alert-danger d-none" id="emailalert" role="alert">
+              Enter valid email. *Ex: xxx@gmail.com
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input onkeyup="validation()" class="form-control  border-top-0 border-start-0 border-end-0" id="phone"
+              placeholder="Enter phone">
+            <div class="alert mt-1 alert-danger  d-none" id="phonealert" role="alert">
+              Enter valid Phone Number
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input onkeyup="validation()" class="form-control  border-top-0 border-start-0 border-end-0" id="age"
+              placeholder="Enter Age">
+            <div class="alert mt-1 alert-danger  d-none" id="agealert" role="alert">
+              Enter valid Age
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input onkeyup="validation()" class="form-control  border-top-0 border-start-0 border-end-0" type="password"
+              id="password" placeholder="Enter Password">
+            <div class="alert mt-1 alert-danger  d-none" id="passwordalert" role="alert">
+              Enter valid password *Minimum eight characters, at least one letter and one number:*
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input onkeyup="validation()" class="form-control  border-top-0 border-start-0 border-end-0" type="password"
+              id="rePassword" placeholder="Enter RePassword">
+            <div class="alert mt-1 alert-danger  d-none" id="repasswordalert" role="alert">
+              Enter valid Repassword
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-outline-danger mt-3 px-3">Submit</button>
+    </div>
+  </section>
+  <!-- end Contact -->
+
+  <script src="js/jQuery-v3.7.1.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
